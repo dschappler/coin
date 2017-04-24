@@ -31,8 +31,8 @@ df['lower'] = df['SMA'] - 2*df['price'].rolling(100).std()
 df['upper'] = df['SMA'] + 2*df['price'].rolling(100).std()
 df['percent_b'] = (df['price']-df['lower']) / (df['upper']-df['lower'])
 df['price_SMA'] = df['price'] / df['SMA']
-df['daily_ret'] = df['price'].shift(1) / df['price']
-df['cum_ret'] = 1 / df['daily_ret'].cumprod()
+df['daily_ret'] = df['price'] / df['price'].shift(1)
+df['cum_ret'] = df['daily_ret'].cumprod()
 df_r = df[['percent_b','price_SMA','daily_ret']]
 
 
